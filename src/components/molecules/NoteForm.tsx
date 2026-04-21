@@ -28,6 +28,7 @@ export default function NoteForm({
 
   return (
     <View style={styles.container}>
+      <AppText style={styles.formTitle}>Add New Note</AppText>
       <AppText style={styles.label}>Title</AppText>
       <AppInput
         placeholder="Enter note title"
@@ -55,6 +56,13 @@ export default function NoteForm({
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+  },
+  formTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: "#333",
+    textAlign: "center",
   },
   label: {
     fontSize: 16,

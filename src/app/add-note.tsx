@@ -1,17 +1,15 @@
 import { useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
+import { useNotes } from "@/context/NotesContext";
 import NoteForm from "@/components/molecules/NoteForm";
 import ScreenLayout from "@/components/templates/ScreenLayout";
 
 export default function AddNoteScreen() {
   const router = useRouter();
+  const { addNote } = useNotes();
 
   const handleAddNote = (title: string, excerpt: string) => {
-    // In a real app, this would be a context or API call
-    console.log("Adding Note:", { title, excerpt });
-    
-    // We navigate back and pass the data (simplistic way for this demo)
-    // In many Expo Router apps, you'd use a store or a global event emitter
+    addNote(title, excerpt);
     router.back();
   };
 

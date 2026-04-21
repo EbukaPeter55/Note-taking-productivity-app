@@ -3,27 +3,11 @@ import { useState } from "react";
 import NotesTemplate from "@/components/templates/NotesTemplate";
 import ScreenLayout from "@/components/templates/ScreenLayout";
 
-const MOCK_NOTES = [
-  {
-    id: "1",
-    title: "Grocery List",
-    excerpt: "Milk, Bread, Eggs, Cheese, Vegetables...",
-  },
-  {
-    id: "2",
-    title: "Project Ideas",
-    excerpt: "1. AI Note Taking App\n2. Fitness Tracker...",
-  },
-  {
-    id: "3",
-    title: "Meeting Notes",
-    excerpt: "Discussed the new architecture and atomic design...",
-  },
-];
+import { useNotes } from "@/context/NotesContext";
 
 export default function NotesScreen() {
   const router = useRouter();
-  const [notes, setNotes] = useState(MOCK_NOTES);
+  const { notes, deleteNote } = useNotes();
 
   const handleAdd = () => {
     router.push("/add-note");
@@ -35,8 +19,7 @@ export default function NotesScreen() {
   };
 
   const handleDelete = (id: string) => {
-    console.log(`Delete Note clicked for ID: ${id}`);
-    setNotes((prev) => prev.filter((note) => note.id !== id));
+    deleteNote(id);
   };
 
   return (
